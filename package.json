@@ -13,9 +13,6 @@
     "file manifest"
   ],
   "scripts": {
-    "build": "gulp build-packages --package workbox-webpack-plugin",
-    "version": "npm run build",
-    "prepare": "npm run build"
   },
   "workbox": {
     "packageType": "node"
