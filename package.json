@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "json-stable-stringify": "^1.0.1",
-    "workbox-build": "https://github.com/tsirlucas/workbox.git/tree/master/packages/workbox-build"
+    "workbox-build": "https://github.com/tsirlucas/workbox.git#workbox-build-temporary"
   },
   "peerDependencies": {
     "webpack": "^2.0.0 || ^3.0.0 || ^4.0.0"
