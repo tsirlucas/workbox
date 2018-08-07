@@ -16,6 +16,7 @@
 
 const ol = require('common-tags').oneLine;
 const objectStringify = require('stringify-object');
+const stripComments = require('strip-comments');
 const errors = require('./errors');
 
 
@@ -33,7 +34,7 @@ function getOptionsString(options = {}) {
   let plugins = [];
   if (options.plugins) {
     // Using lib because JSON.stringify won't handle functions
-    plugins = options.plugins.map((plugin) => objectStringify(plugin));
+    plugins = options.plugins.map((plugin) => stripComments(objectStringify(plugin)));
     delete options.plugins;
   }
 
