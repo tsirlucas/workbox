@@ -33,8 +33,10 @@ const errors = require('./errors');
 function getOptionsString(options = {}) {
   let plugins = [];
   if (options.plugins) {
-    // Using lib because JSON.stringify won't handle functions
-    plugins = options.plugins.map((plugin) => stripComments(objectStringify(plugin)));
+    // Using libs because JSON.stringify won't handle functions
+    // and to remove comments without complexity
+    plugins = options.plugins.map((plugin) =>
+        stripComments(objectStringify(plugin)));
     delete options.plugins;
   }
 
