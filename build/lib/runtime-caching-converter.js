@@ -40,6 +40,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ol = require('common-tags').oneLine;
 var objectStringify = require('stringify-object');
+var stripComments = require('strip-comments');
 var errors = require('./errors');
 
 /**
@@ -59,10 +60,13 @@ function getOptionsString() {
   if (options.plugins) {
     // Using libs because JSON.stringify won't handle functions
     plugins = options.plugins.map(function (plugin) {
-      return objectStringify(plugin)
-      // See http://blog.moagrius.com/javascript/javascript-regexp-to-remove-comments/
-      .replace(/(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm, '');
+      return objectStringify(plugin, {
+        transform: function transform(_obj, _prop, str) {
+          return stripComments(str);
+        }
+      });
     });
+
     delete options.plugins;
   }
 
